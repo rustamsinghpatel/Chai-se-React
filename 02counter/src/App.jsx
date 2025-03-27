@@ -12,7 +12,7 @@ const addValue = () =>{
 }
 
 const removeValu = () => {
-  
+
   setCounter(counter - 1)
 }
   return (
