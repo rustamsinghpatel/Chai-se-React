@@ -2,28 +2,25 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  // Counter ke liye state
   const [counter, setCounter] = useState(0)
-
-  // Show/hide karne ke liye state
   const [showTopics, setShowTopics] = useState(false)
 
-  // Value badhane ka function
   const addValue = () => {
-    setCounter(counter + 1)
+    if (counter < 20) {
+      setCounter(counter + 1)
+    }
   }
 
-  // Value ghatane ka function
   const removeValue = () => {
-    setCounter(counter - 1)
+    if (counter > 0) {
+      setCounter(counter - 1)
+    }
   }
 
-  // List show/hide karne ka function
   const toggleTopics = () => {
     setShowTopics(!showTopics)
   }
 
-  // Jo jo seekha uski list
   const topics = [
     "useState hook ka use",
     "Counter banana",
@@ -47,7 +44,6 @@ function App() {
         {showTopics ? "Hide What I Learned" : "Show What I Learned"}
       </button>
 
-      {/* Ye list tabhi dikhayega jab showTopics true hoga */}
       {showTopics && (
         <div>
           <h3>Jo Seekha:</h3>
