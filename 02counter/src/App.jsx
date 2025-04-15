@@ -1,31 +1,65 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  let  [counter, setCounter] = useState(0)
+  // Counter ke liye state
+  const [counter, setCounter] = useState(0)
 
-const addValue = () =>{
-  
-  setCounter(counter + 1)
-}
+  // Show/hide karne ke liye state
+  const [showTopics, setShowTopics] = useState(false)
 
-const removeValu = () => {
+  // Value badhane ka function
+  const addValue = () => {
+    setCounter(counter + 1)
+  }
 
-  setCounter(counter - 1)
-}
+  // Value ghatane ka function
+  const removeValue = () => {
+    setCounter(counter - 1)
+  }
+
+  // List show/hide karne ka function
+  const toggleTopics = () => {
+    setShowTopics(!showTopics)
+  }
+
+  // Jo jo seekha uski list
+  const topics = [
+    "useState hook ka use",
+    "Counter banana",
+    "Button click par kaam karwana",
+    "JSX syntax samajhna",
+    "React me component ka use"
+  ]
+
   return (
     <>
-     <h1>chai aur react se Counter atteck</h1>
-     <h2>counter valu</h2>
-     <button 
-     onClick={addValue}>Add valu {counter}</button>
-     <br />
-     <button
-     onClick={removeValu}
-     >Remove valu</button>
-     <p>Output ..{counter}</p>
+      <h1>React Counter App</h1>
+      <h2>Counter Value: {counter}</h2>
+
+      <button onClick={addValue}>Add Value</button>
+      <br /><br />
+
+      <button onClick={removeValue}>Remove Value</button>
+      <br /><br />
+
+      <button onClick={toggleTopics}>
+        {showTopics ? "Hide What I Learned" : "Show What I Learned"}
+      </button>
+
+      {/* Ye list tabhi dikhayega jab showTopics true hoga */}
+      {showTopics && (
+        <div>
+          <h3>Jo Seekha:</h3>
+          <ul>
+            {topics.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <p>Output: {counter}</p>
     </>
   )
 }
